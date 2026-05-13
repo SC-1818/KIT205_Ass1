@@ -57,3 +57,17 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
 
         return head;
     }
+
+    CustomerNode* addPurchasePrototype1(CustomerNode * head, int customerID, int productID); {
+        CustomerNode* customer;
+
+        head = insertCustomer(head, customerID);
+        customer = findCustomer(head, customerID);
+
+        if (customer != NULL) {
+            customer->products = insertProduct(customer->products, productID);
+        }
+
+        return head;
+    }
+
