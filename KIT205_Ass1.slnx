@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="KIT205_Ass1/KIT205_Ass1.vcxproj" />
+</Solution>
