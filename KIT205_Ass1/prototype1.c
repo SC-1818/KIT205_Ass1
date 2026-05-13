@@ -29,3 +29,31 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
     }
 
     return NULL;
+
+
+    CustomerNode* insertCustomer(CustomerNode * head, int customerID); {
+        CustomerNode* newNode;
+        CustomerNode* current;
+
+        if (findCustomer(head, customerID) != NULL) {
+            return head;
+        }
+
+        newNode = createCustomerNode(customerID);
+
+        if (head == NULL || customerID < head->customerID) {
+            newNode->next = head;
+            return newNode;
+        }
+
+        current = head;
+
+        while (current->next != NULL && current->next->customerID < customerID) {
+            current = current->next;
+        }
+
+        newNode->next = current->next;
+        current->next = newNode;
+
+        return head;
+    }
