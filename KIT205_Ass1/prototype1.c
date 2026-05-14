@@ -70,4 +70,65 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
 
         return head;
     }
+    void printCustomersPrototype1(CustomerNode * head) {
+        CustomerNode* current = head;
+
+        printf("Customers: ");
+
+        while (current != NULL) {
+            printf("%d ", current->customerID);
+            current = current->next;
+        }
+
+        printf("\n");
+    }
+
+    void printProductsForCustomerPrototype1(CustomerNode * head, int customerID) {
+        CustomerNode* customer = findCustomer(head, customerID);
+
+        if (customer == NULL) {
+            printf("Customer %d not found.\n", customerID);
+            return;
+        }
+
+        printf("Products for customer %d: ", customerID);
+        printProducts(customer->products);
+        printf("\n");
+    }
+
+    void printCustomersForProductPrototype1(CustomerNode * head, int productID) {
+        CustomerNode* current = head;
+        int found = 0;
+
+        printf("Customers who bought product %d: ", productID);
+
+        while (current != NULL) {
+            if (findProduct(current->products, productID)) {
+                printf("%d ", current->customerID);
+                found = 1;
+            }
+
+            current = current->next;
+        }
+
+        if (found == 0) {
+            printf("none");
+        }
+
+        printf("\n");
+    }
+
+    void freeCustomersPrototype1(CustomerNode * head) {
+        CustomerNode* current = head;
+        CustomerNode* temp;
+
+        while (current != NULL) {
+            temp = current;
+            current = current->next;
+
+            freeProducts(temp->products);
+            free(temp);
+        }
+    }
+
 
