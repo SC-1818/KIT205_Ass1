@@ -132,3 +132,29 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
     }
 
 
+    void testPrototype1(); {
+        CustomerNode* database = NULL;
+
+        printf("----- Prototype 1 Test -----\n");
+
+        database = addPurchasePrototype1(database, 103, 5002);
+        database = addPurchasePrototype1(database, 101, 5001);
+        database = addPurchasePrototype1(database, 101, 5003);
+        database = addPurchasePrototype1(database, 102, 5001);
+        database = addPurchasePrototype1(database, 103, 5004);
+
+        printCustomersPrototype1(database);
+
+        printProductsForCustomerPrototype1(database, 101);
+        printProductsForCustomerPrototype1(database, 102);
+        printProductsForCustomerPrototype1(database, 103);
+
+        printCustomersForProductPrototype1(database, 5001);
+        printCustomersForProductPrototype1(database, 5002);
+        printCustomersForProductPrototype1(database, 9999);
+
+        freeCustomersPrototype1(database);
+
+        printf("----- End of Prototype 1 Test -----\n\n");
+    }
+
