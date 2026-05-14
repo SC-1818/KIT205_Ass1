@@ -70,7 +70,7 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
 
         return head;
     }
-    void printCustomersPrototype1(CustomerNode * head) {
+    void printCustomersPrototype1(CustomerNode * head); {
         CustomerNode* current = head;
 
         printf("Customers: ");
@@ -83,7 +83,7 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
         printf("\n");
     }
 
-    void printProductsForCustomerPrototype1(CustomerNode * head, int customerID) {
+    void printProductsForCustomerPrototype1(CustomerNode * head, int customerID); {
         CustomerNode* customer = findCustomer(head, customerID);
 
         if (customer == NULL) {
@@ -96,7 +96,7 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
         printf("\n");
     }
 
-    void printCustomersForProductPrototype1(CustomerNode * head, int productID) {
+    void printCustomersForProductPrototype1(CustomerNode * head, int productID); {
         CustomerNode* current = head;
         int found = 0;
 
@@ -118,7 +118,7 @@ CustomerNode* findCustomer(CustomerNode* head, int customerID) {
         printf("\n");
     }
 
-    void freeCustomersPrototype1(CustomerNode * head) {
+    void freeCustomersPrototype1(CustomerNode * head); {
         CustomerNode* current = head;
         CustomerNode* temp;
 
