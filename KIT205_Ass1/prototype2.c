@@ -60,3 +60,72 @@ void insertHashCustomer(HashCustomerNode* table[], int customerID) {
     newNode->next = table[index];
     table[index] = newNode;
 }
+
+void addPurchasePrototype2(HashCustomerNode* table[], int customerID, int productID) {
+    HashCustomerNode* customer;
+
+    insertHashCustomer(table, customerID);
+    customer = findHashCustomer(table, customerID);
+
+    if (customer != NULL) {
+        customer->products = insertProduct(customer->products, productID);
+    }
+}
+
+void printCustomersPrototype2(HashCustomerNode* table[]) {
+    int i;
+    HashCustomerNode* current;
+
+    printf("Customers: ");
+
+    for (i = 0; i < TABLE_SIZE; i++) {
+        current = table[i];
+
+        while (current != NULL) {
+            printf("%d ", current->customerID);
+            current = current->next;
+        }
+    }
+
+    printf("\n");
+}
+
+void printProductsForCustomerPrototype2(HashCustomerNode* table[], int customerID) {
+    HashCustomerNode* customer = findHashCustomer(table, customerID);
+
+    if (customer == NULL) {
+        printf("Customer %d not found.\n", customerID);
+        return;
+    }
+
+    printf("Products for customer %d: ", customerID);
+    printProducts(customer->products);
+    printf("\n");
+}
+
+void printCustomersForProductPrototype2(HashCustomerNode* table[], int productID) {
+    int i;
+    int found = 0;
+    HashCustomerNode* current;
+
+    printf("Customers who bought product %d: ", productID);
+
+    for (i = 0; i < TABLE_SIZE; i++) {
+        current = table[i];
+
+        while (current != NULL) {
+            if (findProduct(current->products, productID)) {
+                printf("%d ", current->customerID);
+                found = 1;
+            }
+
+            current = current->next;
+        }
+    }
+
+    if (found == 0) {
+        printf("none");
+    }
+
+    printf("\n");
+}
