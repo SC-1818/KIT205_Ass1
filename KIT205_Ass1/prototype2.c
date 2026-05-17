@@ -129,3 +129,52 @@ void printCustomersForProductPrototype2(HashCustomerNode* table[], int productID
 
     printf("\n");
 }
+
+
+void freeHashTable(HashCustomerNode* table[]) {
+    int i;
+    HashCustomerNode* current;
+    HashCustomerNode* temp;
+
+    for (i = 0; i < TABLE_SIZE; i++) {
+        current = table[i];
+
+        while (current != NULL) {
+            temp = current;
+            current = current->next;
+
+            freeProducts(temp->products);
+            free(temp);
+        }
+
+        table[i] = NULL;
+    }
+}
+
+void testPrototype2() {
+    HashCustomerNode* table[TABLE_SIZE];
+
+    setupHashTable(table);
+
+    printf("----- Prototype 2 Test -----\n");
+
+    addPurchasePrototype2(table, 103, 5002);
+    addPurchasePrototype2(table, 101, 5001);
+    addPurchasePrototype2(table, 101, 5003);
+    addPurchasePrototype2(table, 102, 5001);
+    addPurchasePrototype2(table, 103, 5004);
+
+    printCustomersPrototype2(table);
+
+    printProductsForCustomerPrototype2(table, 101);
+    printProductsForCustomerPrototype2(table, 102);
+    printProductsForCustomerPrototype2(table, 103);
+
+    printCustomersForProductPrototype2(table, 5001);
+    printCustomersForProductPrototype2(table, 5002);
+    printCustomersForProductPrototype2(table, 9999);
+
+    freeHashTable(table);
+
+    printf("----- End of Prototype 2 Test -----\n");
+}
